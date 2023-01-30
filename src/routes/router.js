@@ -6,6 +6,7 @@ Vue.use(VueRouter);
 import HomeView from "@/pages/HomeView";
 import VideosView from "@/pages/VideosView";
 import SobreView from "@/pages/SobreView";
+import ContatoView from "@/pages/ContatoView";
 
 const routes = [
   {
@@ -19,6 +20,10 @@ const routes = [
   {
     path: "/sobre",
     component: SobreView,
+  },
+  {
+    path: "/contato",
+    component: ContatoView,
   },
 ];
 
