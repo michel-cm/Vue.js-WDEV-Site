@@ -8,14 +8,15 @@
           id="logo"
       /></a>
       <img
+        @click="openMenu"
         src="https://raw.githubusercontent.com/william-costa/wdev-mock-site-resources/master/assets/images/menu.svg"
         alt="Abrir menu"
         id="menu-button"
       />
 
-      <div id="menu-overlay"></div>
+      <div id="menu-overlay" v-if="menuActive" @click="closeMenu"></div>
 
-      <div id="menu-items">
+      <div id="menu-items" :class="{ active: menuActive }">
         <img
           src="https://raw.githubusercontent.com/william-costa/wdev-mock-site-resources/master/assets/images/wdev.svg"
           alt="WDEV"
@@ -35,6 +36,19 @@
 <script>
 export default {
   name: "HeaderView",
+  data() {
+    return {
+      menuActive: false,
+    };
+  },
+  methods: {
+    openMenu() {
+      this.menuActive = true;
+    },
+    closeMenu() {
+      this.menuActive = false;
+    },
+  },
 };
 </script>
 
@@ -51,6 +65,8 @@ header {
 nav {
   display: flex;
   justify-content: space-between;
+  height: 60px;
+  align-items: center;
 }
 
 #logo {
@@ -59,6 +75,7 @@ nav {
 
 #menu-button {
   width: 30px;
+  cursor: pointer;
 }
 
 #menu-overlay {
@@ -84,10 +101,14 @@ nav {
   background-color: var(--color-background-nav);
   width: 60%;
   height: 100vh;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+}
+
+#menu-items.active {
+  display: flex;
 }
 
 ul {
@@ -101,5 +122,30 @@ ul li {
 
 ul li a {
   color: var(--color-text-light);
+}
+
+@media (min-width: 700px) {
+  #menu-button,
+  #menu-logo,
+  #menu-overlay {
+    display: none;
+  }
+  #menu-items {
+    display: flex;
+    position: static;
+    height: 60px;
+    width: auto;
+  }
+
+  ul {
+    display: flex;
+    height: 60px;
+    align-items: center;
+  }
+
+  ul li {
+    margin: 0;
+    margin-left: 20px;
+  }
 }
 </style>
