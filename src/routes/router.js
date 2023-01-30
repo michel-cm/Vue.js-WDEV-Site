@@ -5,6 +5,7 @@ Vue.use(VueRouter);
 
 import HomeView from "@/pages/HomeView";
 import VideosView from "@/pages/VideosView";
+import SobreView from "@/pages/SobreView";
 
 const routes = [
   {
@@ -14,6 +15,10 @@ const routes = [
   {
     path: "/videos",
     component: VideosView,
+  },
+  {
+    path: "/sobre",
+    component: SobreView,
   },
 ];
 
